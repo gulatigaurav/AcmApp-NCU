@@ -1,0 +1,26 @@
+<div class="container">
+  <%= link_to 'New Blog', new_blog_path %>
+      <div class="blog-header">
+        <div class="container">
+            <h1 class="text-center">ACM Blog</h1>
+          <p class="lead blog-description text-center">Information about all latest events.</p>
+        </div>
+      </div>
+    </header>
+
+  <% @blogs.each do |blog| %>
+
+  <div class="blog-post">
+    
+    <div class="blog-post-title">      
+      <%= blog.title  %>
+    </div>
+
+    <div class="blog-post-meta">      
+    <%= blog.description %>
+    </div>
+
+  </div>
+  <% end %>
+<hr>
+</div>
