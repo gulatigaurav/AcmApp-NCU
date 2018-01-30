@@ -15,13 +15,12 @@
   	<%= render 'shared/app_navbar' %>
 <!-- End of navbar -->
     <div class="container">
-      <br>
     <% if flash[:notice] %>
       <div class="alert alert-secondary notice" role="alert">
         <%= flash[:notice] %>
     </div>
     <% end %>
-    </div>
+      </div>
 
     <%= yield %>
 
