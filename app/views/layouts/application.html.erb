@@ -14,12 +14,19 @@
 <!-- Start of navbar -->
   	<%= render 'shared/app_navbar' %>
 <!-- End of navbar -->
-    <div class="container">
-    <% if flash[:notice] %>
-      <div class="alert alert-secondary notice" role="alert">
-        <%= flash[:notice] %>
-    </div>
-    <% end %>
+
+<div class="container">  
+<% flash.each do |name,msg| %>
+      <div class='alert alert-dark'>
+    <a href="#" class="close" data-dismiss="alert">&#215;</a>
+<!-- content_tag basically cretes a div... For more info check out the api.rubyonrails.org  -->
+  <%= content_tag(:div, msg, :id => "flash_#{name}" ) if msg.is_a?(String) %>
+  </div>
+</div>
+<% end %>
+</div>
+
+    
       </div>
 
     <%= yield %>

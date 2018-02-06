@@ -57,5 +57,6 @@ gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 gem 'jquery-ui-rails', '~> 6.0', '>= 6.0.1'
 gem 'bootstrap-datepicker-rails', '~> 1.7', '>= 1.7.1.1'
 gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.3'
+gem 'devise', '~> 4.4', '>= 4.4.1'
 
 ruby "2.4.2"

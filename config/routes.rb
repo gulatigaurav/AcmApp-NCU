@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :users
   resources :events, only: [:new, :create]
   resources :blogs
   resources :feedbacks, only: [:new, :create]
