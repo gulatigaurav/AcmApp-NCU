@@ -11,6 +11,10 @@
   <%= @blog.description %>
 </p>
 
+<p>
+	<small>Created By: <%= User.find(@blog.user_id).email %></small>
+</p>
+
 <%= link_to 'Edit', edit_blog_path(@blog) %> |
 <%= link_to 'Back', blogs_path %>	
 </div>
