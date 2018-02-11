@@ -1,5 +1,7 @@
 <div class="container">
-  <%= link_to 'New Blog', new_blog_path %>
+  <div style="padding-top: 15px;">    
+  <%= link_to 'New Blog', new_blog_path, class: 'btn btn-primary' %>
+  </div>
       <div class="blog-header">
         <div class="container">
             <h1 class="text-center">ACM Blog</h1>
@@ -19,6 +21,15 @@
     <div class="blog-post-meta">      
     <%= blog.description %>
     </div>
+
+<% if current_user && blog.user_id == current_user.id %>
+  <%= link_to fa_icon("edit 2x"), edit_blog_path(blog), class: "color-black" %> |
+    <%= link_to fa_icon("trash 2x") , blog_path(blog), method: :delete,data: {confirm: "Are you sure?"} ,class: "color-red" %> | 
+<% end %>
+
+<%= link_to fa_icon("chevron-right 2x"), blog_path(blog) %>  
+
+
 
   </div>
   <% end %>

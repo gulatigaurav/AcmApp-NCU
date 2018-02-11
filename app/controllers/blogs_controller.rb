@@ -1,6 +1,7 @@
 class BlogsController < ApplicationController
   before_action :set_blog, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :require_same_user, only: [:edit, :update, :destroy]
   # GET /blogs
   # GET /blogs.json
   def index
@@ -53,13 +54,13 @@ class BlogsController < ApplicationController
 
   # DELETE /blogs/1
   # DELETE /blogs/1.json
-  # def destroy
-  #   @blog.destroy
-  #   respond_to do |format|
-  #     format.html { redirect_to blogs_url, notice: 'Blog was successfully destroyed.' }
-  #     format.json { head :no_content }
-  #   end
-  # end
+  def destroy
+    @blog.destroy
+    respond_to do |format|
+      format.html { redirect_to blogs_url, notice: 'Blog was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -71,4 +72,12 @@ class BlogsController < ApplicationController
     def blog_params
       params.require(:blog).permit(:title, :description)
     end
+
+    def require_same_user
+      if current_user != @blog.user
+       flash[:danger] = "You can only edit or delete your own articles"
+     redirect_to root_path
+  end
+
+end
 end
