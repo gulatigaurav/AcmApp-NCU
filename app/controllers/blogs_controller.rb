@@ -2,7 +2,7 @@ class BlogsController < ApplicationController
   before_action :set_blog, only: [:show, :edit, :update, :destroy, :toggle_status]
   before_action :authenticate_user!, except: [:index, :show]
   before_action :require_same_user, only: [:edit, :update, :destroy]
-  access all: [:show, :index], user: [except: :toggle_status], site_admin: :all
+  access all: [:show, :index], user: {except: [:toggle_status]}, site_admin: :all
   # GET /blogs
   # GET /blogs.json
   def index
