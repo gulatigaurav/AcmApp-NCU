@@ -15,12 +15,12 @@
 	<small>Created By: <%= User.find(@blog.user_id).email %></small>
 </p>
 
-<% if current_user && @blog.user_id == current_user.id %>
+<% if logged_in?(:site_admin) || current_user && @blog.user_id == current_user.id %>
 	<%= link_to fa_icon("edit 2x"), edit_blog_path(@blog), class: "color-black" %> |
-    <%= link_to fa_icon("trash 2x") , blog_path(@blog), method: :delete,data: {confirm: "Are you sure?"} ,class: "color-red" %> | 
+    <%= link_to fa_icon("trash 2x") , blog_path(@blog), method: :delete,data: {confirm: "Are you sure?"} ,class: "color-red" %> |
 <% end %>
 
-<%= link_to fa_icon("chevron-circle-left 2x"), blogs_path %>	
+<%= link_to fa_icon("chevron-circle-left 2x"), blogs_path %>
 
 </div>
 <hr>
